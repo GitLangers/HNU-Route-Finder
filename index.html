@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Holy Name University Route Finder</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Holy Name University Student Navigation</p>
+        <h1>HNU Route Finder</h1>
+        <p class="subtitle">A Holy Name University campus map application for Janssen Heights that helps students find the shortest path between academic buildings, student services, and shared facilities.</p>
+      </div>
+      <div class="topbar-meta">
+        <div class="badge">
+          <span class="badge-label">Application Type</span>
+          <strong>HNU Campus Map & Route Planner</strong>
+        </div>
+      </div>
+    </header>
+
+    <main class="main-grid">
+      <section class="panel controls-panel">
+        <h2>Plan Your Route</h2>
+        <form id="route-form" class="route-form">
+          <label for="start-room">Current room</label>
+          <input id="start-room" name="start-room" list="room-options" placeholder="Example: Learning Resource Center" required>
+
+          <label for="end-room">Destination room</label>
+          <input id="end-room" name="end-room" list="room-options" placeholder="Example: COECS Building" required>
+
+          <datalist id="room-options"></datalist>
+
+          <div class="button-row">
+            <button type="submit">Calculate Optimal Path</button>
+            <button type="button" id="swap-button" class="secondary">Swap</button>
+          </div>
+        </form>
+
+        <div id="status-card" class="status-card info">
+          Enter your starting room and destination to generate the shortest route.
+        </div>
+
+        <div class="results-grid">
+          <article class="stat-card">
+            <span class="stat-label">Route length</span>
+            <strong id="distance-output">--</strong>
+          </article>
+          <article class="stat-card">
+            <span class="stat-label">Estimated walk time</span>
+            <strong id="time-output">--</strong>
+          </article>
+        </div>
+
+        <section class="steps-section">
+          <div class="section-title-row">
+            <h3>Directions</h3>
+            <span id="path-output" class="path-chip">No route yet</span>
+          </div>
+          <ol id="directions-list" class="directions-list">
+            <li>Select rooms to see turn-by-turn guidance.</li>
+          </ol>
+        </section>
+      </section>
+
+      <section class="panel map-panel">
+        <div class="section-title-row">
+          <h2>School Map</h2>
+          <span class="legend-chip">Highlighted path = recommended route</span>
+        </div>
+
+        <div class="map-wrapper">
+          <svg id="campus-map" viewBox="0 0 860 520" role="img" aria-label="Holy Name University Janssen Heights campus map showing connected buildings and facilities">
+            <g id="background-layer"></g>
+            <g id="edges-layer"></g>
+            <g id="path-layer"></g>
+            <g id="nodes-layer"></g>
+          </svg>
+        </div>
+        <p class="map-credit">Map model based on your provided HNU campus guide image, with route points placed around the gates, ovals, hospital, gyms, courts, and student areas shown in that layout.</p>
+      </section>
+
+      <section class="panel purpose-panel">
+        <h2>Why Develop This Application?</h2>
+        <div class="purpose-grid">
+          <article>
+            <h3>Faster navigation</h3>
+            <p>Holynamians can quickly find the shortest route to college buildings, offices, the library, and shared campus spaces.</p>
+          </article>
+          <article>
+            <h3>Better student experience</h3>
+            <p>New students and visitors can move around the Janssen Heights campus with more confidence because the app reduces confusion.</p>
+          </article>
+          <article>
+            <h3>Time efficiency</h3>
+            <p>Students and faculty spend less time asking for directions and more time focused on classes, services, and activities.</p>
+          </article>
+          <article>
+            <h3>Practical real-world value</h3>
+            <p>This shows how a web application can solve a real HNU campus need using form input, pathfinding logic, and visual route guidance.</p>
+          </article>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
